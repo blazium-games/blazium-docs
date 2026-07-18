@@ -588,7 +588,7 @@ glance.
     var float_number = .234
     var other_float_number = 13.
 
-Use lowercase for letters in hexadecimal numbers, as their lower height makes
+Use uppercase for letters in hexadecimal numbers, as their upper height makes
 the number easier to read.
 
 **Good**:
@@ -597,7 +597,7 @@ the number easier to read.
 
 ::
 
-    var hex_number = 0xfb8c0b
+    var hex_number = 0xFB8C0B
 
 **Bad**:
 
@@ -605,7 +605,7 @@ the number easier to read.
 
 ::
 
-    var hex_number = 0xFB8C0B
+    var hex_number = 0xfb8c0b
 
 Take advantage of GDScript's underscores in literals to make large numbers more
 readable.
@@ -617,8 +617,8 @@ readable.
 ::
 
     var large_number = 1_234_567_890
-    var large_hex_number = 0xffff_f8f8_0000
-    var large_bin_number = 0b1101_0010_1010
+    var large_hex_number = 0xFFFF_F8F8_0000
+    var large_bin_number = 0B1101_0010_1010
     # Numbers lower than 1000000 generally don't need separators.
     var small_number = 12345
 
@@ -629,7 +629,7 @@ readable.
 ::
 
     var large_number = 1234567890
-    var large_hex_number = 0xfffff8f80000
+    var large_hex_number = 0xFFFFF8F80000
     var large_bin_number = 0b110100101010
     # Numbers lower than 1000000 generally don't need separators.
     var small_number = 12_345
