@@ -40,15 +40,15 @@ Methods
 .. table::
    :widths: auto
 
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>` | :ref:`cancel_task<class_JustAMCPTaskManager_method_cancel_task>`\ (\ task_id\: :ref:`String<class_String>`\ )         |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>` | :ref:`get_task<class_JustAMCPTaskManager_method_get_task>`\ (\ task_id\: :ref:`String<class_String>`\ )               |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>` | :ref:`get_task_result<class_JustAMCPTaskManager_method_get_task_result>`\ (\ task_id\: :ref:`String<class_String>`\ ) |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>` | :ref:`list_tasks<class_JustAMCPTaskManager_method_list_tasks>`\ (\ cursor\: :ref:`String<class_String>` = ""\ )       |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+   +-------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>` | :ref:`cancel_task<class_JustAMCPTaskManager_method_cancel_task>`\ (\ task_id\: :ref:`String<class_String>`\ )                                                 |
+   +-------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>` | :ref:`get_task<class_JustAMCPTaskManager_method_get_task>`\ (\ task_id\: :ref:`String<class_String>`\ )                                                       |
+   +-------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>` | :ref:`get_task_result<class_JustAMCPTaskManager_method_get_task_result>`\ (\ task_id\: :ref:`String<class_String>`, wait\: :ref:`bool<class_bool>` = false\ ) |
+   +-------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>` | :ref:`list_tasks<class_JustAMCPTaskManager_method_list_tasks>`\ (\ cursor\: :ref:`String<class_String>` = ""\ )                                               |
+   +-------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -87,7 +87,7 @@ Returns the current metadata for ``task_id``, or an error dictionary if the task
 
 .. rst-class:: classref-method
 
-:ref:`Dictionary<class_Dictionary>` **get_task_result**\ (\ task_id\: :ref:`String<class_String>`\ ) :ref:`🔗<class_JustAMCPTaskManager_method_get_task_result>`
+:ref:`Dictionary<class_Dictionary>` **get_task_result**\ (\ task_id\: :ref:`String<class_String>`, wait\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_JustAMCPTaskManager_method_get_task_result>`
 
 Blocks until the task reaches a terminal state, then returns the stored MCP tool result (including ``_meta`` related-task metadata). Unknown tasks return ``-32602``.
 

@@ -12,6 +12,8 @@ EditorContextMenuPlugin
 
 **Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
+**Inherited By:** :ref:`AssetTagsContextMenuPlugin<class_AssetTagsContextMenuPlugin>`
+
 Plugin for adding custom context menus in the editor.
 
 .. rst-class:: classref-introduction-group

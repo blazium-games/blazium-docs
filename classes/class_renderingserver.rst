@@ -171,6 +171,8 @@ Methods
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                           | :ref:`canvas_item_set_light_mask<class_RenderingServer_method_canvas_item_set_light_mask>`\ (\ item\: :ref:`RID<class_RID>`, mask\: :ref:`int<class_int>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                           | :ref:`canvas_item_set_mask_parent<class_RenderingServer_method_canvas_item_set_mask_parent>`\ (\ item\: :ref:`RID<class_RID>`, mode\: :ref:`CanvasGroupMode<enum_RenderingServer_CanvasGroupMode>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+   +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                           | :ref:`canvas_item_set_material<class_RenderingServer_method_canvas_item_set_material>`\ (\ item\: :ref:`RID<class_RID>`, material\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                           | :ref:`canvas_item_set_modulate<class_RenderingServer_method_canvas_item_set_modulate>`\ (\ item\: :ref:`RID<class_RID>`, color\: :ref:`Color<class_Color>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
@@ -5262,6 +5264,22 @@ Parent is used for clipping child, but parent is also drawn underneath child as 
 
 
 
+.. _class_RenderingServer_constant_CANVAS_GROUP_MODE_MASK_PARENT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`CanvasGroupMode<enum_RenderingServer_CanvasGroupMode>` **CANVAS_GROUP_MODE_MASK_PARENT** = ``4``
+
+Applied automatically to the parent of a :ref:`CanvasItem<class_CanvasItem>` that has :ref:`CanvasItem.mask_parent<class_CanvasItem_property_mask_parent>` enabled. The parent becomes the group owner: it is routed through the back buffer and remains visible only where the masking child's pixels are opaque. Not meant to be set directly.
+
+.. _class_RenderingServer_constant_CANVAS_GROUP_MODE_MASK_PARENT_SUBTRACT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`CanvasGroupMode<enum_RenderingServer_CanvasGroupMode>` **CANVAS_GROUP_MODE_MASK_PARENT_SUBTRACT** = ``5``
+
+Like :ref:`CANVAS_GROUP_MODE_MASK_PARENT<class_RenderingServer_constant_CANVAS_GROUP_MODE_MASK_PARENT>`, but the parent is hidden where the masking child is opaque instead of kept.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -6597,6 +6615,20 @@ If ``interpolated`` is ``true``, turns on physics interpolation for the canvas i
 |void| **canvas_item_set_light_mask**\ (\ item\: :ref:`RID<class_RID>`, mask\: :ref:`int<class_int>`\ ) :ref:`🔗<class_RenderingServer_method_canvas_item_set_light_mask>`
 
 Sets the light ``mask`` for the canvas item specified by the ``item`` RID. Equivalent to :ref:`CanvasItem.light_mask<class_CanvasItem_property_light_mask>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_RenderingServer_method_canvas_item_set_mask_parent:
+
+.. rst-class:: classref-method
+
+|void| **canvas_item_set_mask_parent**\ (\ item\: :ref:`RID<class_RID>`, mode\: :ref:`CanvasGroupMode<enum_RenderingServer_CanvasGroupMode>`\ ) :ref:`🔗<class_RenderingServer_method_canvas_item_set_mask_parent>`
+
+Marks the canvas item specified by the ``item`` RID as a mask for its parent: it is not drawn itself, but its opaque pixels define where the parent remains visible. ``mode`` must be :ref:`CANVAS_GROUP_MODE_DISABLED<class_RenderingServer_constant_CANVAS_GROUP_MODE_DISABLED>` (off), :ref:`CANVAS_GROUP_MODE_MASK_PARENT<class_RenderingServer_constant_CANVAS_GROUP_MODE_MASK_PARENT>` (parent kept where this item is opaque) or :ref:`CANVAS_GROUP_MODE_MASK_PARENT_SUBTRACT<class_RenderingServer_constant_CANVAS_GROUP_MODE_MASK_PARENT_SUBTRACT>` (parent hidden where this item is opaque). The parent is promoted to the matching group automatically, so no :ref:`BackBufferCopy<class_BackBufferCopy>` is required.
+
+\ **Note:** The equivalent node functionality is found in :ref:`CanvasItem.mask_parent<class_CanvasItem_property_mask_parent>`.
 
 .. rst-class:: classref-item-separator
 

@@ -66,6 +66,8 @@ Methods
    +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                | :ref:`close_sse_connection<class_HTTPServer_method_close_sse_connection>`\ (\ connection_id\: :ref:`int<class_int>`\ )                                                                                                                                                  |
    +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`complete_response<class_HTTPServer_method_complete_response>`\ (\ client_id\: :ref:`int<class_int>`, response\: :ref:`HTTPResponse<class_HTTPResponse>`\ )                                                                                                        |
+   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                | :ref:`enable_directory_listing<class_HTTPServer_method_enable_directory_listing>`\ (\ enable\: :ref:`bool<class_bool>`\ )                                                                                                                                               |
    +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`             | :ref:`get_active_sse_connections<class_HTTPServer_method_get_active_sse_connections>`\ (\ ) |const|                                                                                                                                                                     |
@@ -178,6 +180,20 @@ Removes all registered routes from the server.
 |void| **close_sse_connection**\ (\ connection_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_HTTPServer_method_close_sse_connection>`
 
 Closes an active Server-Sent Events connection with the given ``connection_id``. Emits :ref:`sse_connection_closed<class_HTTPServer_signal_sse_connection_closed>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_HTTPServer_method_complete_response:
+
+.. rst-class:: classref-method
+
+:ref:`Error<enum_@GlobalScope_Error>` **complete_response**\ (\ client_id\: :ref:`int<class_int>`, response\: :ref:`HTTPResponse<class_HTTPResponse>`\ ) :ref:`🔗<class_HTTPServer_method_complete_response>`
+
+.. container:: contribute
+
+	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 .. rst-class:: classref-item-separator
 

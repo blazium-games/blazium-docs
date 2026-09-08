@@ -25,7 +25,11 @@ Implements the MCP `Logging <https://modelcontextprotocol.io/specification/2025-
 
 Implements MCP `Streamable HTTP <https://modelcontextprotocol.io/specification/2025-11-25/basic/transports>`__ on ``/mcp`` with ``MCP-Session-Id``, per-stream SSE event IDs, ``Last-Event-ID`` replay, and ``DELETE`` session teardown. Legacy ``/sse`` + ``/message`` and stateless ``POST /mcp`` remain supported for existing clients.
 
-Implements MCP `pagination <https://modelcontextprotocol.io/specification/2025-11-25/server/utilities/pagination>`__ for ``tools/list``, ``prompts/list``, ``resources/list``, and ``resources/templates/list`` using opaque cursors. Buffers recent ``notifications/message`` payloads for replay when clients missed SSE; see :ref:`ProjectSettings.blazium/justamcp/mcp_log_buffer_size<class_ProjectSettings_property_blazium/justamcp/mcp_log_buffer_size>` and ``blazium://logs/mcp/{cursor}``.
+When :ref:`ProjectSettings.blazium/justamcp/bind_to_localhost_only<class_ProjectSettings_property_blazium/justamcp/bind_to_localhost_only>` is enabled, :ref:`ProjectSettings.blazium/justamcp/streamable_http_strict_origin<class_ProjectSettings_property_blazium/justamcp/streamable_http_strict_origin>` defaults to ``true`` so non-local ``Origin`` headers are rejected if the server is later bound beyond localhost.
+
+\ :ref:`ProjectSettings.blazium/justamcp/parallel_readonly_lane<class_ProjectSettings_property_blazium/justamcp/parallel_readonly_lane>` is deprecated; use :ref:`ProjectSettings.blazium/justamcp/readonly_worker_concurrency<class_ProjectSettings_property_blazium/justamcp/readonly_worker_concurrency>` (0 = serial main-only; N = up to N concurrent WorkerSafe readonly tools on WorkerThreadPool). WorkerSafe is a subset of readonly tools (``execution.threadAffinity=worker``); readonly alone does not imply off-main safety.
+
+Implements MCP `pagination <https://modelcontextprotocol.io/specification/2025-11-25/server/utilities/pagination>`__ for ``tools/list``, ``prompts/list``, ``resources/list``, and ``resources/templates/list`` using opaque cursors. Buffers recent ``notifications/message`` payloads for replay when clients missed SSE; see :ref:`ProjectSettings.blazium/justamcp/mcp_log_buffer_size<class_ProjectSettings_property_blazium/justamcp/mcp_log_buffer_size>` and canonical ``blazium://logs/mcp/cursor/{token}`` (legacy ``blazium://logs/mcp/{cursor}`` remains readable for one release).
 
 Supports task-augmented ``tools/call`` for long-running tools (`Tasks <https://modelcontextprotocol.io/specification/2025-11-25/basic/utilities/tasks>`__), ``notifications/progress`` via ``_meta.progressToken`` (`Progress <https://modelcontextprotocol.io/specification/2025-11-25/basic/utilities/progress>`__), and cooperative cancellation (`Cancellation <https://modelcontextprotocol.io/specification/2025-11-25/basic/utilities/cancellation>`__). Sync requests honor ``notifications/cancelled``; task-augmented work uses ``tasks/cancel``.
 
@@ -51,13 +55,15 @@ Methods
 .. table::
    :widths: auto
 
-   +-------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`is_server_started<class_JustAMCPServer_method_is_server_started>`\ (\ ) |const|                                                                                                                                                    |
-   +-------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                  | :ref:`report_tool_progress<class_JustAMCPServer_method_report_tool_progress>`\ (\ token\: :ref:`String<class_String>`, progress\: :ref:`float<class_float>`, total\: :ref:`float<class_float>`, message\: :ref:`String<class_String>`\ ) |
-   +-------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                  | :ref:`send_log_message<class_JustAMCPServer_method_send_log_message>`\ (\ level\: :ref:`String<class_String>`, logger\: :ref:`String<class_String>`, data\: :ref:`Variant<class_Variant>` = null\ )                                      |
-   +-------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>` | :ref:`get_session_roots<class_JustAMCPServer_method_get_session_roots>`\ (\ session_id\: :ref:`String<class_String>`\ ) |const|                                                                                                          |
+   +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`   | :ref:`is_server_started<class_JustAMCPServer_method_is_server_started>`\ (\ ) |const|                                                                                                                                                    |
+   +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`report_tool_progress<class_JustAMCPServer_method_report_tool_progress>`\ (\ token\: :ref:`String<class_String>`, progress\: :ref:`float<class_float>`, total\: :ref:`float<class_float>`, message\: :ref:`String<class_String>`\ ) |
+   +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`send_log_message<class_JustAMCPServer_method_send_log_message>`\ (\ level\: :ref:`String<class_String>`, logger\: :ref:`String<class_String>`, data\: :ref:`Variant<class_Variant>` = null\ )                                      |
+   +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -84,9 +90,9 @@ Emitted when an elicitation request finishes. ``request_id`` identifies the requ
 
 .. rst-class:: classref-signal
 
-**request_cancelled**\ (\ request_id\: :ref:`Variant<class_Variant>`, reason\: :ref:`String<class_String>`\ ) :ref:`🔗<class_JustAMCPServer_signal_request_cancelled>`
+**request_cancelled**\ (\ request_id\: :ref:`Variant<class_Variant>`, reason\: :ref:`String<class_String>`, caller_session_id\: :ref:`String<class_String>`\ ) :ref:`🔗<class_JustAMCPServer_signal_request_cancelled>`
 
-Emitted when a pending MCP request is cancelled. ``request_id`` identifies the request and ``reason`` explains the cancellation.
+Emitted when a pending MCP request is cancelled. ``request_id`` identifies the request, ``reason`` explains the cancellation, and ``caller_session_id`` is the session that issued the cancel (empty for legacy/unscoped cancels). Cross-session cancels are ignored.
 
 .. rst-class:: classref-item-separator
 
@@ -120,6 +126,18 @@ Emitted when an MCP client requests a tool call. Handlers should execute ``tool_
 
 Method Descriptions
 -------------------
+
+.. _class_JustAMCPServer_method_get_session_roots:
+
+.. rst-class:: classref-method
+
+:ref:`Array<class_Array>` **get_session_roots**\ (\ session_id\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_JustAMCPServer_method_get_session_roots>`
+
+Returns the workspace roots last reported by the client for ``session_id`` after ``roots/list`` or ``notifications/roots/list_changed``.
+
+.. rst-class:: classref-item-separator
+
+----
 
 .. _class_JustAMCPServer_method_is_server_started:
 

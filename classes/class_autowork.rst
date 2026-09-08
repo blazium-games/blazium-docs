@@ -53,6 +53,8 @@ Methods
    :widths: auto
 
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`abort<class_Autowork_method_abort>`\ (\ )                                                                                                                                           |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                            | :ref:`add_directory<class_Autowork_method_add_directory>`\ (\ path\: :ref:`String<class_String>`, prefix\: :ref:`String<class_String>` = "", suffix\: :ref:`String<class_String>` = ""\ ) |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                            | :ref:`add_script<class_Autowork_method_add_script>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                             |
@@ -79,10 +81,35 @@ Methods
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`get_test_script_count<class_Autowork_method_get_test_script_count>`\ (\ )                                                                                                           |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`is_aborted<class_Autowork_method_is_aborted>`\ (\ ) |const|                                                                                                                         |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`is_finished<class_Autowork_method_is_finished>`\ (\ ) |const|                                                                                                                       |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                            | :ref:`run_tests<class_Autowork_method_run_tests>`\ (\ )                                                                                                                                   |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`set_json_output_path<class_Autowork_method_set_json_output_path>`\ (\ path\: :ref:`String<class_String>`\ )                                                                         |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                            | :ref:`set_test<class_Autowork_method_set_test>`\ (\ test_name\: :ref:`String<class_String>`\ )                                                                                            |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`set_xml_output_path<class_Autowork_method_set_xml_output_path>`\ (\ path\: :ref:`String<class_String>`\ )                                                                           |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+.. rst-class:: classref-section-separator
+
+----
+
+.. rst-class:: classref-descriptions-group
+
+Signals
+-------
+
+.. _class_Autowork_signal_tests_finished:
+
+.. rst-class:: classref-signal
+
+**tests_finished**\ (\ ) :ref:`🔗<class_Autowork_signal_tests_finished>`
+
+Emitted when a test run finishes or is aborted.
 
 .. rst-class:: classref-section-separator
 
@@ -92,6 +119,18 @@ Methods
 
 Method Descriptions
 -------------------
+
+.. _class_Autowork_method_abort:
+
+.. rst-class:: classref-method
+
+|void| **abort**\ (\ ) :ref:`🔗<class_Autowork_method_abort>`
+
+Stops an in-progress test run. Marks the suite aborted, frees active test instances, and emits :ref:`tests_finished<class_Autowork_signal_tests_finished>`.
+
+.. rst-class:: classref-item-separator
+
+----
 
 .. _class_Autowork_method_add_directory:
 
@@ -259,6 +298,30 @@ Returns the number of scripts that contain tests.
 
 ----
 
+.. _class_Autowork_method_is_aborted:
+
+.. rst-class:: classref-method
+
+:ref:`bool<class_bool>` **is_aborted**\ (\ ) |const| :ref:`🔗<class_Autowork_method_is_aborted>`
+
+Returns ``true`` if :ref:`abort()<class_Autowork_method_abort>` was called on this run.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Autowork_method_is_finished:
+
+.. rst-class:: classref-method
+
+:ref:`bool<class_bool>` **is_finished**\ (\ ) |const| :ref:`🔗<class_Autowork_method_is_finished>`
+
+Returns ``true`` when the current run has finished or been aborted.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_Autowork_method_run_tests:
 
 .. rst-class:: classref-method
@@ -271,6 +334,18 @@ Executes all collected tests.
 
 ----
 
+.. _class_Autowork_method_set_json_output_path:
+
+.. rst-class:: classref-method
+
+|void| **set_json_output_path**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_Autowork_method_set_json_output_path>`
+
+Sets the JSON results path written when the run finishes. If empty, ``user://autowork_results.json`` is used.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_Autowork_method_set_test:
 
 .. rst-class:: classref-method
@@ -278,6 +353,18 @@ Executes all collected tests.
 |void| **set_test**\ (\ test_name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_Autowork_method_set_test>`
 
 Sets a filter pattern to determine which tests should be executed.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Autowork_method_set_xml_output_path:
+
+.. rst-class:: classref-method
+
+|void| **set_xml_output_path**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_Autowork_method_set_xml_output_path>`
+
+Sets an optional JUnit XML results path written when the run finishes. Command-line ``--aw-junit=`` overrides this path.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`

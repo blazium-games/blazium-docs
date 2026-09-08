@@ -12,7 +12,7 @@ JustAMCPResource
 
 **Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`JustAMCPResourceProjectFile<class_JustAMCPResourceProjectFile>`, :ref:`JustAMCPResourceSystemLogs<class_JustAMCPResourceSystemLogs>`
+**Inherited By:** :ref:`JustAMCPResourceProjectFile<class_JustAMCPResourceProjectFile>`, :ref:`JustAMCPResourceUI<class_JustAMCPResourceUI>`
 
 Base class for resources exposed through the MCP resource API.
 
