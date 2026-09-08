@@ -12,7 +12,7 @@ MeshInstance3D
 
 **Inherits:** :ref:`GeometryInstance3D<class_GeometryInstance3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`SoftBody3D<class_SoftBody3D>`
+**Inherited By:** :ref:`DDDBrowserModel<class_DDDBrowserModel>`, :ref:`SoftBody3D<class_SoftBody3D>`
 
 Node that instances meshes into a scenario.
 

@@ -40,6 +40,7 @@ Nodes
     class_area2d
     class_area3d
     class_aspectratiocontainer
+    class_assettagseditorplugin
     class_audiolistener2d
     class_audiolistener3d
     class_audiostreamplayer
@@ -70,6 +71,8 @@ Nodes
     class_checkbox
     class_checkbutton
     class_codeedit
+    class_coldstorageeditorplugin
+    class_coldstoragesettingsui
     class_collisionobject2d
     class_collisionobject3d
     class_collisionpolygon2d
@@ -96,7 +99,18 @@ Nodes
     class_csgsphere3d
     class_csgtorus3d
     class_dampedspringjoint2d
+    class_dddbrowseraudio
+    class_dddbrowserfont
+    class_dddbrowserlevel
+    class_dddbrowsermodel
+    class_dddbrowserpicturebox
+    class_dddbrowserportal
+    class_dddbrowserscript
+    class_dddbrowserspawn
+    class_dddbrowsertextbox
+    class_dddbrowservolume
     class_decal
+    class_deviceautoruneditorplugin
     class_directionallight2d
     class_directionallight3d
     class_discordembeddedappclient
@@ -150,6 +164,13 @@ Nodes
     class_httprequest
     class_importermeshinstance3d
     class_instanceplaceholder
+    class_interdvdchapter
+    class_interdvddisc
+    class_interdvdeditorplugin
+    class_interdvdhotspot
+    class_interdvdmenupage
+    class_interdvdtitle
+    class_interdvdtitleset
     class_ircclientnode
     class_itemlist
     class_joint2d
@@ -165,6 +186,7 @@ Nodes
     class_line2d
     class_lineedit
     class_linkbutton
+    class_livewallpapereditorplugin
     class_lookatmodifier3d
     class_luaueditorplugin
     class_luaulanguageserverplugin
@@ -243,6 +265,7 @@ Nodes
     class_rigidbody2d
     class_rigidbody3d
     class_rootmotionview
+    class_screensavereditorplugin
     class_scriptcreatedialog
     class_scripteditor
     class_scripteditorbase
@@ -458,6 +481,7 @@ Resources
     class_gdextension
     class_gdscript
     class_gdscriptsyntaxhighlighter
+    class_giftexture
     class_gltfaccessor
     class_gltfanimation
     class_gltfbufferview
@@ -503,6 +527,12 @@ Resources
     class_inputeventscreentouch
     class_inputeventshortcut
     class_inputeventwithmodifiers
+    class_interdvdbutton
+    class_interdvdcell
+    class_interdvdmenu
+    class_interdvdpgc
+    class_interdvdproject
+    class_interdvdstream
     class_json
     class_labelsettings
     class_lightmapgidata
@@ -758,6 +788,12 @@ Other objects
 
     class_object
     class_aescontext
+    class_analytics
+    class_assettagcoordinator
+    class_assettagmanager
+    class_assettagregistry
+    class_assettagruntime
+    class_assettagscontextmenuplugin
     class_astar2d
     class_astar3d
     class_astargrid2d
@@ -774,6 +810,7 @@ Other objects
     class_audiostreamplaybackpolyphonic
     class_audiostreamplaybackresampled
     class_audiostreamplaybacksynchronized
+    class_autoruninf
     class_autoworkcollector
     class_autoworkconfig
     class_autoworkdoubler
@@ -795,7 +832,10 @@ Other objects
     class_cameraserver
     class_charfxtransform
     class_classdb
+    class_coldstoragesettingsinspectorplugin
+    class_coldstoragevcs
     class_configfile
+    class_crashreporter
     class_crowdcontrol
     class_crypto
     class_csvasynctask
@@ -808,6 +848,8 @@ Other objects
     class_csvrowmodel
     class_csvtable
     class_csvwriter
+    class_dddbrowserexporter
+    class_dddbrowserpreviewserver
     class_decodedjwt
     class_diraccess
     class_discord
@@ -824,6 +866,7 @@ Other objects
     class_editorcontextmenuplugin
     class_editordebuggerplugin
     class_editordebuggersession
+    class_editorexportdeviceautorun
     class_editorexportluau
     class_editorexportplatform
     class_editorexportplatformandroid
@@ -834,6 +877,9 @@ Other objects
     class_editorexportplatformpc
     class_editorexportplatformweb
     class_editorexportplatformwindows
+    class_editorexportplatformwindowsinterdvd
+    class_editorexportplatformwindowslivewallpaper
+    class_editorexportplatformwindowsscreensaver
     class_editorexportplugin
     class_editorexportpreset
     class_editorfeatureprofile
@@ -859,6 +905,7 @@ Other objects
     class_editortranslationparserplugin
     class_editorundoredomanager
     class_editorvcsinterface
+    class_embeddingbackend
     class_encodedobjectasid
     class_enetclient
     class_enetconnection
@@ -879,6 +926,7 @@ Other objects
     class_gdkresult
     class_geometry2d
     class_geometry3d
+    class_gifrecorder
     class_gltfobjectmodelproperty
     class_hashingcontext
     class_hmaccontext
@@ -890,6 +938,11 @@ Other objects
     class_imageformatloaderextension
     class_input
     class_inputmap
+    class_interdvdexportprogress
+    class_interdvdifowriter
+    class_interdvdinstruction
+    class_interdvdmachine
+    class_interdvdscenebaker
     class_intervaltweener
     class_ip
     class_ircchannel
@@ -906,11 +959,15 @@ Other objects
     class_jsonrpc
     class_justamcpanalysistools
     class_justamcpanimationtools
+    class_justamcpassettagstools
     class_justamcpaudiotools
     class_justamcpbatchtools
     class_justamcpdocumentationtools
     class_justamcpexporttools
     class_justamcpinputtools
+    class_justamcpmcpappshost
+    class_justamcpmcpclient
+    class_justamcpmcpclientbridge
     class_justamcpmultiusertools
     class_justamcpnodetools
     class_justamcpparticletools
@@ -918,6 +975,7 @@ Other objects
     class_justamcpprofilingtools
     class_justamcpprojecttools
     class_justamcpprompt
+    class_justamcppromptassettaggingworkflow
     class_justamcppromptblaziumcontext
     class_justamcppromptblaziumworkflow
     class_justamcpprompteditorstate
@@ -926,17 +984,20 @@ Other objects
     class_justamcpresource
     class_justamcpresourceexecutor
     class_justamcpresourceprojectfile
-    class_justamcpresourcesystemlogs
     class_justamcpresourcetools
+    class_justamcpresourceui
     class_justamcpruntime
     class_justamcpscene3dtools
     class_justamcpscenetools
     class_justamcpscripttools
+    class_justamcpsemanticsearchtools
     class_justamcpshadertools
     class_justamcptaskmanager
     class_justamcpthemetools
     class_justamcptilemaptools
+    class_justamcptoolcategorybridge
     class_justamcptoolexecutor
+    class_justamcptoolsetregistry
     class_jwt
     class_jwtbuilder
     class_kickapi
@@ -952,8 +1013,10 @@ Other objects
     class_kickusersrequests
     class_kinematiccollision2d
     class_kinematiccollision3d
+    class_lexicaltagbackend
     class_lightmapper
     class_lightmapperrd
+    class_livewallpaper
     class_luacompileoptions
     class_luadebug
     class_luastate
@@ -1052,6 +1115,8 @@ Other objects
     class_refcounted
     class_regex
     class_regexmatch
+    class_remotecontrolregistry
+    class_remotecontrolserver
     class_renderdata
     class_renderdataextension
     class_renderdatard
@@ -1075,6 +1140,8 @@ Other objects
     class_resourceimportercsv
     class_resourceimportercsvtranslation
     class_resourceimporterdynamicfont
+    class_resourceimportergif
+    class_resourceimportergifframes
     class_resourceimporterimage
     class_resourceimporterimagefont
     class_resourceimporterlayeredtexture
@@ -1093,8 +1160,13 @@ Other objects
     class_scenestate
     class_scenetree
     class_scenetreetimer
+    class_screensaver
     class_scriptlanguage
     class_scriptlanguageextension
+    class_semanticassetindex
+    class_semanticasyncembedworker
+    class_semanticasyncsearchworker
+    class_semanticsearchbackend
     class_semaphore
     class_shaderincludedb
     class_skinreference
@@ -1227,6 +1299,7 @@ Editor-only
     class_editorcontextmenuplugin
     class_editordebuggerplugin
     class_editordebuggersession
+    class_editorexportdeviceautorun
     class_editorexportluau
     class_editorexportplatform
     class_editorexportplatformandroid
@@ -1237,6 +1310,9 @@ Editor-only
     class_editorexportplatformpc
     class_editorexportplatformweb
     class_editorexportplatformwindows
+    class_editorexportplatformwindowsinterdvd
+    class_editorexportplatformwindowslivewallpaper
+    class_editorexportplatformwindowsscreensaver
     class_editorexportplugin
     class_editorexportpreset
     class_editorfeatureprofile

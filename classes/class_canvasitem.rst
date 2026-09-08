@@ -55,6 +55,8 @@ Properties
    +-----------------------------------------------------------+---------------------------------------------------------------------------+-----------------------+
    | :ref:`int<class_int>`                                     | :ref:`light_mask<class_CanvasItem_property_light_mask>`                   | ``1``                 |
    +-----------------------------------------------------------+---------------------------------------------------------------------------+-----------------------+
+   | :ref:`MaskParentMode<enum_CanvasItem_MaskParentMode>`     | :ref:`mask_parent<class_CanvasItem_property_mask_parent>`                 | ``0``                 |
+   +-----------------------------------------------------------+---------------------------------------------------------------------------+-----------------------+
    | :ref:`Material<class_Material>`                           | :ref:`material<class_CanvasItem_property_material>`                       |                       |
    +-----------------------------------------------------------+---------------------------------------------------------------------------+-----------------------+
    | :ref:`Color<class_Color>`                                 | :ref:`modulate<class_CanvasItem_property_modulate>`                       | ``Color(1, 1, 1, 1)`` |
@@ -442,6 +444,48 @@ Parent is used for clipping child, but parent is also drawn underneath child as 
 
 Represents the size of the :ref:`ClipChildrenMode<enum_CanvasItem_ClipChildrenMode>` enum.
 
+.. rst-class:: classref-item-separator
+
+----
+
+.. _enum_CanvasItem_MaskParentMode:
+
+.. rst-class:: classref-enumeration
+
+enum **MaskParentMode**: :ref:`🔗<enum_CanvasItem_MaskParentMode>`
+
+.. _class_CanvasItem_constant_MASK_PARENT_DISABLED:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`MaskParentMode<enum_CanvasItem_MaskParentMode>` **MASK_PARENT_DISABLED** = ``0``
+
+The node is drawn normally and does not mask its parent.
+
+.. _class_CanvasItem_constant_MASK_PARENT_INTERSECT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`MaskParentMode<enum_CanvasItem_MaskParentMode>` **MASK_PARENT_INTERSECT** = ``1``
+
+The node is not drawn; the parent is only visible where this node is opaque.
+
+.. _class_CanvasItem_constant_MASK_PARENT_SUBTRACT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`MaskParentMode<enum_CanvasItem_MaskParentMode>` **MASK_PARENT_SUBTRACT** = ``2``
+
+The node is not drawn; the parent is hidden where this node is opaque (cuts a hole).
+
+.. _class_CanvasItem_constant_MASK_PARENT_MAX:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`MaskParentMode<enum_CanvasItem_MaskParentMode>` **MASK_PARENT_MAX** = ``3``
+
+Represents the size of the :ref:`MaskParentMode<enum_CanvasItem_MaskParentMode>` enum.
+
 .. rst-class:: classref-section-separator
 
 ----
@@ -547,6 +591,27 @@ Allows the current node to clip child nodes, essentially acting as a mask.
 - :ref:`int<class_int>` **get_light_mask**\ (\ )
 
 The rendering layers in which this **CanvasItem** responds to :ref:`Light2D<class_Light2D>` nodes.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_CanvasItem_property_mask_parent:
+
+.. rst-class:: classref-property
+
+:ref:`MaskParentMode<enum_CanvasItem_MaskParentMode>` **mask_parent** = ``0`` :ref:`🔗<class_CanvasItem_property_mask_parent>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_mask_parent**\ (\ value\: :ref:`MaskParentMode<enum_CanvasItem_MaskParentMode>`\ )
+- :ref:`MaskParentMode<enum_CanvasItem_MaskParentMode>` **get_mask_parent**\ (\ )
+
+If not :ref:`MASK_PARENT_DISABLED<class_CanvasItem_constant_MASK_PARENT_DISABLED>`, this **CanvasItem** is not drawn on its own. Instead, its opaque pixels are used as an alpha mask for its parent **CanvasItem**. With :ref:`MASK_PARENT_INTERSECT<class_CanvasItem_constant_MASK_PARENT_INTERSECT>` the parent is only visible where this node is opaque; with :ref:`MASK_PARENT_SUBTRACT<class_CanvasItem_constant_MASK_PARENT_SUBTRACT>` the parent is hidden where this node is opaque. This is the inverse of :ref:`clip_children<class_CanvasItem_property_clip_children>`, and lets a child (for example a :ref:`Sprite2D<class_Sprite2D>`) mask its parent without any :ref:`BackBufferCopy<class_BackBufferCopy>` setup.
+
+\ **Note:** The parent must itself draw something (for example a :ref:`Sprite2D<class_Sprite2D>`, :ref:`TextureRect<class_TextureRect>` or :ref:`Polygon2D<class_Polygon2D>`) for the mask to have a visible effect. Masking a non-drawing parent such as a plain :ref:`Node2D<class_Node2D>` produces no visible result, since there is nothing for the mask to shape. Also has no effect if the parent is not a **CanvasItem**, or when set on a :ref:`CanvasGroup<class_CanvasGroup>`.
+
+\ **Note:** On the Compatibility rendering method, soft (anti-aliased or gradient) mask edges require :ref:`ProjectSettings.rendering/viewport/hdr_2d<class_ProjectSettings_property_rendering/viewport/hdr_2d>` to be enabled, or the Forward+ rendering method, to render smoothly. Without one of these, the back buffer only has 2 bits of alpha precision and soft edges appear dithered.
 
 .. rst-class:: classref-item-separator
 

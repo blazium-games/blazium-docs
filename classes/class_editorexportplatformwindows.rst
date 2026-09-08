@@ -12,6 +12,8 @@ EditorExportPlatformWindows
 
 **Inherits:** :ref:`EditorExportPlatformPC<class_EditorExportPlatformPC>` **<** :ref:`EditorExportPlatform<class_EditorExportPlatform>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
+**Inherited By:** :ref:`EditorExportPlatformWindowsLiveWallpaper<class_EditorExportPlatformWindowsLiveWallpaper>`, :ref:`EditorExportPlatformWindowsScreensaver<class_EditorExportPlatformWindowsScreensaver>`
+
 Exporter for Windows.
 
 .. rst-class:: classref-introduction-group

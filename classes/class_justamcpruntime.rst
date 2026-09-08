@@ -19,22 +19,22 @@ Engine singleton that hosts the JustAMCP runtime server.
 Description
 -----------
 
-**JustAMCPRuntime** runs the local MCP endpoint and routes incoming commands to built-in tools, resources, prompts, or custom command callables. It is independent of the active :ref:`SceneTree<class_SceneTree>`, so it can keep serving editor automation while scenes are opened, closed, or changed.
+**JustAMCPRuntime** hosts the exported or play-mode MCP endpoint. The HTTP host exposes only project-owned tools and prompts registered with :ref:`register_tool()<class_JustAMCPRuntime_method_register_tool>` and :ref:`register_prompt()<class_JustAMCPRuntime_method_register_prompt>`. The TCP bridge still accepts :ref:`register_custom_command()<class_JustAMCPRuntime_method_register_custom_command>`. It is independent of the active :ref:`SceneTree<class_SceneTree>`, so it can keep serving while scenes are opened, closed, or changed.
+
+The game HTTP MCP host listens on :ref:`ProjectSettings.blazium/justamcp/export_port<class_ProjectSettings_property_blazium/justamcp/export_port>` when set, otherwise the editor port plus one (6506 → 6507). Autowork ``--aw-*`` does not start MCP unless ``--enable-mcp`` or ``--enable-mcp-game-control`` is also passed. Project-owned Cursor tools register through :ref:`register_tool()<class_JustAMCPRuntime_method_register_tool>`; TCP :ref:`register_custom_command()<class_JustAMCPRuntime_method_register_custom_command>` stays for the game-control bridge.
 
 ::
 
-    JustAMCPRuntime.port = 7777
+    JustAMCPRuntime.port = 6507
     JustAMCPRuntime.enabled = true
+    
+    JustAMCPRuntime.register_tool("echo", "Echo text", {"type": "object", "properties": {"text": {"type": "string"}}}, func(args):
+        return args.get("text", "")
+    )
     
     JustAMCPRuntime.register_custom_command("double", func(value):
         return value * 2
     )
-    
-    var result = JustAMCPRuntime.execute_command("run_custom_command", {
-        "name": "double",
-        "args": [21],
-    })
-    print(result["result"])
 
 .. rst-class:: classref-reftable-group
 
@@ -47,7 +47,7 @@ Properties
    +-------------------------+--------------------------------------------------------+-----------+
    | :ref:`bool<class_bool>` | :ref:`enabled<class_JustAMCPRuntime_property_enabled>` | ``false`` |
    +-------------------------+--------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`   | :ref:`port<class_JustAMCPRuntime_property_port>`       | ``7777``  |
+   | :ref:`int<class_int>`   | :ref:`port<class_JustAMCPRuntime_property_port>`       | ``6507``  |
    +-------------------------+--------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
@@ -58,15 +58,29 @@ Methods
 .. table::
    :widths: auto
 
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>` | :ref:`execute_command<class_JustAMCPRuntime_method_execute_command>`\ (\ command\: :ref:`String<class_String>`, params\: :ref:`Dictionary<class_Dictionary>`\ )            |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                              | :ref:`poll<class_JustAMCPRuntime_method_poll>`\ (\ )                                                                                                                       |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                              | :ref:`register_custom_command<class_JustAMCPRuntime_method_register_custom_command>`\ (\ name\: :ref:`String<class_String>`, callable\: :ref:`Callable<class_Callable>`\ ) |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                              | :ref:`unregister_custom_command<class_JustAMCPRuntime_method_unregister_custom_command>`\ (\ name\: :ref:`String<class_String>`\ )                                         |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>` | :ref:`execute_command<class_JustAMCPRuntime_method_execute_command>`\ (\ command\: :ref:`String<class_String>`, params\: :ref:`Dictionary<class_Dictionary>`\ )                                                                                       |
+   +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`is_listening<class_JustAMCPRuntime_method_is_listening>`\ (\ ) |const|                                                                                                                                                                          |
+   +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`           | :ref:`list_tools<class_JustAMCPRuntime_method_list_tools>`\ (\ ) |const|                                                                                                                                                                              |
+   +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                              | :ref:`load_project_mcp_scripts<class_JustAMCPRuntime_method_load_project_mcp_scripts>`\ (\ )                                                                                                                                                          |
+   +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                              | :ref:`poll<class_JustAMCPRuntime_method_poll>`\ (\ )                                                                                                                                                                                                  |
+   +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                              | :ref:`register_custom_command<class_JustAMCPRuntime_method_register_custom_command>`\ (\ name\: :ref:`String<class_String>`, callable\: :ref:`Callable<class_Callable>`\ )                                                                            |
+   +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                              | :ref:`register_prompt<class_JustAMCPRuntime_method_register_prompt>`\ (\ name\: :ref:`String<class_String>`, description\: :ref:`String<class_String>`, callable\: :ref:`Callable<class_Callable>`\ )                                                 |
+   +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                              | :ref:`register_tool<class_JustAMCPRuntime_method_register_tool>`\ (\ name\: :ref:`String<class_String>`, description\: :ref:`String<class_String>`, input_schema\: :ref:`Dictionary<class_Dictionary>`, callable\: :ref:`Callable<class_Callable>`\ ) |
+   +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                              | :ref:`unregister_custom_command<class_JustAMCPRuntime_method_unregister_custom_command>`\ (\ name\: :ref:`String<class_String>`\ )                                                                                                                    |
+   +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                              | :ref:`unregister_prompt<class_JustAMCPRuntime_method_unregister_prompt>`\ (\ name\: :ref:`String<class_String>`\ )                                                                                                                                    |
+   +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                              | :ref:`unregister_tool<class_JustAMCPRuntime_method_unregister_tool>`\ (\ name\: :ref:`String<class_String>`\ )                                                                                                                                        |
+   +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -139,14 +153,14 @@ When ``true``, the runtime server is active and can accept MCP traffic. Setting 
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **port** = ``7777`` :ref:`🔗<class_JustAMCPRuntime_property_port>`
+:ref:`int<class_int>` **port** = ``6507`` :ref:`🔗<class_JustAMCPRuntime_property_port>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_port**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_port**\ (\ )
 
-TCP port used by the JustAMCP runtime server. Change this before enabling the runtime when a project needs a non-default port.
+Game MCP port. Defaults to the editor HTTP port plus one (6506 → 6507). Override with ``--mcp-game-port`` or :ref:`ProjectSettings.blazium/justamcp/export_port<class_ProjectSettings_property_blazium/justamcp/export_port>`. Never bind the editor port. ``remote_control`` also defaults to 6507; if bind fails the host retries once on port+1.
 
 .. rst-class:: classref-section-separator
 
@@ -164,6 +178,42 @@ Method Descriptions
 :ref:`Dictionary<class_Dictionary>` **execute_command**\ (\ command\: :ref:`String<class_String>`, params\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_JustAMCPRuntime_method_execute_command>`
 
 Executes a runtime command with ``params`` and returns the command result dictionary. Commands include built-in runtime operations, tool dispatch, resources, prompts, and ``run_custom_command``.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_JustAMCPRuntime_method_is_listening:
+
+.. rst-class:: classref-method
+
+:ref:`bool<class_bool>` **is_listening**\ (\ ) |const| :ref:`🔗<class_JustAMCPRuntime_method_is_listening>`
+
+Returns ``true`` when the HTTP MCP host or TCP game-control bridge is accepting connections.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_JustAMCPRuntime_method_list_tools:
+
+.. rst-class:: classref-method
+
+:ref:`Array<class_Array>` **list_tools**\ (\ ) |const| :ref:`🔗<class_JustAMCPRuntime_method_list_tools>`
+
+Returns schemas for project-owned tools registered with :ref:`register_tool()<class_JustAMCPRuntime_method_register_tool>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_JustAMCPRuntime_method_load_project_mcp_scripts:
+
+.. rst-class:: classref-method
+
+|void| **load_project_mcp_scripts**\ (\ ) :ref:`🔗<class_JustAMCPRuntime_method_load_project_mcp_scripts>`
+
+Loads ``register.gd`` and ``register.luau`` from :ref:`ProjectSettings.blazium/justamcp/project_mcp_dir<class_ProjectSettings_property_blazium/justamcp/project_mcp_dir>` (default ``res://mcp``) so those scripts can call :ref:`register_tool()<class_JustAMCPRuntime_method_register_tool>` and :ref:`register_prompt()<class_JustAMCPRuntime_method_register_prompt>`.
 
 .. rst-class:: classref-item-separator
 
@@ -193,6 +243,30 @@ Registers ``callable`` under ``name`` so MCP clients can invoke it with ``execut
 
 ----
 
+.. _class_JustAMCPRuntime_method_register_prompt:
+
+.. rst-class:: classref-method
+
+|void| **register_prompt**\ (\ name\: :ref:`String<class_String>`, description\: :ref:`String<class_String>`, callable\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_JustAMCPRuntime_method_register_prompt>`
+
+Registers a project-owned MCP prompt. ``callable`` receives the prompt argument dictionary and should return messages or a string. Same ClassDB API for GDScript and Luau.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_JustAMCPRuntime_method_register_tool:
+
+.. rst-class:: classref-method
+
+|void| **register_tool**\ (\ name\: :ref:`String<class_String>`, description\: :ref:`String<class_String>`, input_schema\: :ref:`Dictionary<class_Dictionary>`, callable\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_JustAMCPRuntime_method_register_tool>`
+
+Registers a project-owned Streamable HTTP MCP tool that appears in ``tools/list`` and is invoked by ``tools/call``. ``input_schema`` is a JSON Schema object. Same ClassDB API for GDScript and Luau.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_JustAMCPRuntime_method_unregister_custom_command:
 
 .. rst-class:: classref-method
@@ -200,6 +274,30 @@ Registers ``callable`` under ``name`` so MCP clients can invoke it with ``execut
 |void| **unregister_custom_command**\ (\ name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_JustAMCPRuntime_method_unregister_custom_command>`
 
 Removes the custom command registered as ``name``. Calls to ``run_custom_command`` with that name will return an error after removal.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_JustAMCPRuntime_method_unregister_prompt:
+
+.. rst-class:: classref-method
+
+|void| **unregister_prompt**\ (\ name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_JustAMCPRuntime_method_unregister_prompt>`
+
+Removes the project-owned MCP prompt registered as ``name``.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_JustAMCPRuntime_method_unregister_tool:
+
+.. rst-class:: classref-method
+
+|void| **unregister_tool**\ (\ name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_JustAMCPRuntime_method_unregister_tool>`
+
+Removes the project-owned MCP tool registered as ``name``.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`

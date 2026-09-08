@@ -37,15 +37,15 @@ Methods
 .. table::
    :widths: auto
 
-   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                              | :ref:`add_resource<class_JustAMCPResourceExecutor_method_add_resource>`\ (\ resource\: :ref:`JustAMCPResource<class_JustAMCPResource>`\ )      |
-   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>` | :ref:`list_resource_templates<class_JustAMCPResourceExecutor_method_list_resource_templates>`\ (\ cursor\: :ref:`String<class_String>` = ""\ ) |
-   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>` | :ref:`list_resources<class_JustAMCPResourceExecutor_method_list_resources>`\ (\ cursor\: :ref:`String<class_String>` = ""\ )                   |
-   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>` | :ref:`read_resource<class_JustAMCPResourceExecutor_method_read_resource>`\ (\ uri\: :ref:`String<class_String>`\ )                             |
-   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                              | :ref:`add_resource<class_JustAMCPResourceExecutor_method_add_resource>`\ (\ resource\: :ref:`JustAMCPResource<class_JustAMCPResource>`\ )                                                          |
+   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>` | :ref:`list_resource_templates<class_JustAMCPResourceExecutor_method_list_resource_templates>`\ (\ cursor\: :ref:`String<class_String>` = "", include_unlisted\: :ref:`bool<class_bool>` = false\ ) |
+   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>` | :ref:`list_resources<class_JustAMCPResourceExecutor_method_list_resources>`\ (\ cursor\: :ref:`String<class_String>` = "", include_unlisted\: :ref:`bool<class_bool>` = false\ )                   |
+   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>` | :ref:`read_resource<class_JustAMCPResourceExecutor_method_read_resource>`\ (\ uri\: :ref:`String<class_String>`\ )                                                                                 |
+   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -72,9 +72,9 @@ Registers a :ref:`JustAMCPResource<class_JustAMCPResource>` instance so it appea
 
 .. rst-class:: classref-method
 
-:ref:`Dictionary<class_Dictionary>` **list_resource_templates**\ (\ cursor\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_JustAMCPResourceExecutor_method_list_resource_templates>`
+:ref:`Dictionary<class_Dictionary>` **list_resource_templates**\ (\ cursor\: :ref:`String<class_String>` = "", include_unlisted\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_JustAMCPResourceExecutor_method_list_resource_templates>`
 
-Returns a paginated MCP ``resources/templates/list`` dictionary with ``resourceTemplates`` and optional ``nextCursor``.
+Returns a paginated MCP ``resources/templates/list`` dictionary with ``resourceTemplates`` and optional ``nextCursor``. When ``include_unlisted`` is ``false``, templates disabled by the Resources section toggle or a per-resource toggle are omitted.
 
 .. rst-class:: classref-item-separator
 
@@ -84,9 +84,9 @@ Returns a paginated MCP ``resources/templates/list`` dictionary with ``resourceT
 
 .. rst-class:: classref-method
 
-:ref:`Dictionary<class_Dictionary>` **list_resources**\ (\ cursor\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_JustAMCPResourceExecutor_method_list_resources>`
+:ref:`Dictionary<class_Dictionary>` **list_resources**\ (\ cursor\: :ref:`String<class_String>` = "", include_unlisted\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_JustAMCPResourceExecutor_method_list_resources>`
 
-Returns a paginated MCP ``resources/list`` dictionary with ``resources`` and optional ``nextCursor``.
+Returns a paginated MCP ``resources/list`` dictionary with ``resources`` and optional ``nextCursor``. When ``include_unlisted`` is ``false``, resources disabled by the Resources section toggle or a per-resource toggle are omitted.
 
 .. rst-class:: classref-item-separator
 

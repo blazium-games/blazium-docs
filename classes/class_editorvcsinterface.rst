@@ -12,6 +12,8 @@ EditorVCSInterface
 
 **Inherits:** :ref:`Object<class_Object>`
 
+**Inherited By:** :ref:`ColdStorageVCS<class_ColdStorageVCS>`
+
 Version Control System (VCS) interface, which reads and writes to the local VCS in use.
 
 .. rst-class:: classref-introduction-group

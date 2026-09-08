@@ -61,6 +61,10 @@ Properties
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`asset_library/use_threads<class_EditorSettings_property_asset_library/use_threads>`                                                                                                                         |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`                         | :ref:`blazium/justamcp/bridge_url_allow_hosts<class_EditorSettings_property_blazium/justamcp/bridge_url_allow_hosts>`                                                                                             |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`                         | :ref:`blazium/justamcp/mcp_clients<class_EditorSettings_property_blazium/justamcp/mcp_clients>`                                                                                                                   |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`debugger/auto_switch_to_remote_scene_tree<class_EditorSettings_property_debugger/auto_switch_to_remote_scene_tree>`                                                                                         |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`debugger/auto_switch_to_stack_trace<class_EditorSettings_property_debugger/auto_switch_to_stack_trace>`                                                                                                     |
@@ -978,6 +982,34 @@ Property Descriptions
 :ref:`bool<class_bool>` **asset_library/use_threads** :ref:`🔗<class_EditorSettings_property_asset_library/use_threads>`
 
 If ``true``, the Asset Library uses multiple threads for its HTTP requests. This prevents the Asset Library from blocking the main thread for every loaded asset.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorSettings_property_blazium/justamcp/bridge_url_allow_hosts:
+
+.. rst-class:: classref-property
+
+:ref:`Array<class_Array>` **blazium/justamcp/bridge_url_allow_hosts** :ref:`🔗<class_EditorSettings_property_blazium/justamcp/bridge_url_allow_hosts>`
+
+.. container:: contribute
+
+	There is currently no description for this property. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorSettings_property_blazium/justamcp/mcp_clients:
+
+.. rst-class:: classref-property
+
+:ref:`Array<class_Array>` **blazium/justamcp/mcp_clients** :ref:`🔗<class_EditorSettings_property_blazium/justamcp/mcp_clients>`
+
+.. container:: contribute
+
+	There is currently no description for this property. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 .. rst-class:: classref-item-separator
 

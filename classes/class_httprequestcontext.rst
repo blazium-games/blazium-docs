@@ -86,6 +86,8 @@ Methods
    :widths: auto
 
    +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`               | :ref:`get_client_id<class_HTTPRequestContext_method_get_client_id>`\ (\ ) |const|                                                                                           |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`         | :ref:`get_header<class_HTTPRequestContext_method_get_header>`\ (\ name\: :ref:`String<class_String>`, default_value\: :ref:`String<class_String>` = ""\ ) |const|           |
    +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`         | :ref:`get_path_param<class_HTTPRequestContext_method_get_path_param>`\ (\ name\: :ref:`String<class_String>`, default_value\: :ref:`String<class_String>` = ""\ ) |const|   |
@@ -101,6 +103,8 @@ Methods
    | :ref:`Dictionary<class_Dictionary>` | :ref:`parse_form_data<class_HTTPRequestContext_method_parse_form_data>`\ (\ ) |const|                                                                                       |
    +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>` | :ref:`parse_json_body<class_HTTPRequestContext_method_parse_json_body>`\ (\ ) |const|                                                                                       |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                              | :ref:`set_client_id<class_HTTPRequestContext_method_set_client_id>`\ (\ client_id\: :ref:`int<class_int>`\ )                                                                |
    +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
@@ -270,6 +274,20 @@ The complete request path including query parameters.
 Method Descriptions
 -------------------
 
+.. _class_HTTPRequestContext_method_get_client_id:
+
+.. rst-class:: classref-method
+
+:ref:`int<class_int>` **get_client_id**\ (\ ) |const| :ref:`🔗<class_HTTPRequestContext_method_get_client_id>`
+
+.. container:: contribute
+
+	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_HTTPRequestContext_method_get_header:
 
 .. rst-class:: classref-method
@@ -367,6 +385,20 @@ Parses the request body as application/x-www-form-urlencoded data and returns a 
 :ref:`Dictionary<class_Dictionary>` **parse_json_body**\ (\ ) |const| :ref:`🔗<class_HTTPRequestContext_method_parse_json_body>`
 
 Parses the request body as JSON and returns a dictionary. Returns an empty dictionary if the body is not valid JSON or is not a JSON object.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_HTTPRequestContext_method_set_client_id:
+
+.. rst-class:: classref-method
+
+|void| **set_client_id**\ (\ client_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_HTTPRequestContext_method_set_client_id>`
+
+.. container:: contribute
+
+	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`

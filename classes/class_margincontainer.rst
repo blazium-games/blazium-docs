@@ -15,7 +15,7 @@ MarginContainer
 
 **Inherits:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`MultiuserEditorSettingsUI<class_MultiuserEditorSettingsUI>`
+**Inherited By:** :ref:`ColdStorageSettingsUI<class_ColdStorageSettingsUI>`, :ref:`MultiuserEditorSettingsUI<class_MultiuserEditorSettingsUI>`
 
 A container that keeps a margin around its child controls.
 

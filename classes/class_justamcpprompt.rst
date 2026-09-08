@@ -12,7 +12,7 @@ JustAMCPPrompt
 
 **Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`JustAMCPPromptBlaziumContext<class_JustAMCPPromptBlaziumContext>`, :ref:`JustAMCPPromptBlaziumWorkflow<class_JustAMCPPromptBlaziumWorkflow>`, :ref:`JustAMCPPromptEditorState<class_JustAMCPPromptEditorState>`, :ref:`JustAMCPPromptProjectInfo<class_JustAMCPPromptProjectInfo>`
+**Inherited By:** :ref:`JustAMCPPromptAssetTaggingWorkflow<class_JustAMCPPromptAssetTaggingWorkflow>`, :ref:`JustAMCPPromptBlaziumContext<class_JustAMCPPromptBlaziumContext>`, :ref:`JustAMCPPromptBlaziumWorkflow<class_JustAMCPPromptBlaziumWorkflow>`, :ref:`JustAMCPPromptEditorState<class_JustAMCPPromptEditorState>`, :ref:`JustAMCPPromptProjectInfo<class_JustAMCPPromptProjectInfo>`
 
 Base class for prompts exposed through the MCP prompt API.
 

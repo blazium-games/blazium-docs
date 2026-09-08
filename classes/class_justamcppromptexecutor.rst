@@ -37,15 +37,15 @@ Methods
 .. table::
    :widths: auto
 
-   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                              | :ref:`add_prompt<class_JustAMCPPromptExecutor_method_add_prompt>`\ (\ prompt\: :ref:`JustAMCPPrompt<class_JustAMCPPrompt>`\ )                                                |
-   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>` | :ref:`complete_prompt<class_JustAMCPPromptExecutor_method_complete_prompt>`\ (\ ref\: :ref:`Dictionary<class_Dictionary>`, argument\: :ref:`Dictionary<class_Dictionary>`\ ) |
-   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>` | :ref:`get_prompt<class_JustAMCPPromptExecutor_method_get_prompt>`\ (\ name\: :ref:`String<class_String>`, args\: :ref:`Dictionary<class_Dictionary>`\ )                      |
-   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>` | :ref:`list_prompts<class_JustAMCPPromptExecutor_method_list_prompts>`\ (\ cursor\: :ref:`String<class_String>` = ""\ )                                                       |
-   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                              | :ref:`add_prompt<class_JustAMCPPromptExecutor_method_add_prompt>`\ (\ prompt\: :ref:`JustAMCPPrompt<class_JustAMCPPrompt>`\ )                                                                                                    |
+   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>` | :ref:`complete_prompt<class_JustAMCPPromptExecutor_method_complete_prompt>`\ (\ ref\: :ref:`Dictionary<class_Dictionary>`, argument\: :ref:`Dictionary<class_Dictionary>`, context\: :ref:`Dictionary<class_Dictionary>` = {}\ ) |
+   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>` | :ref:`get_prompt<class_JustAMCPPromptExecutor_method_get_prompt>`\ (\ name\: :ref:`String<class_String>`, args\: :ref:`Dictionary<class_Dictionary>`\ )                                                                          |
+   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>` | :ref:`list_prompts<class_JustAMCPPromptExecutor_method_list_prompts>`\ (\ cursor\: :ref:`String<class_String>` = "", include_unlisted\: :ref:`bool<class_bool>` = false\ )                                                       |
+   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -72,9 +72,9 @@ Registers a :ref:`JustAMCPPrompt<class_JustAMCPPrompt>` instance so it appears i
 
 .. rst-class:: classref-method
 
-:ref:`Dictionary<class_Dictionary>` **complete_prompt**\ (\ ref\: :ref:`Dictionary<class_Dictionary>`, argument\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_JustAMCPPromptExecutor_method_complete_prompt>`
+:ref:`Dictionary<class_Dictionary>` **complete_prompt**\ (\ ref\: :ref:`Dictionary<class_Dictionary>`, argument\: :ref:`Dictionary<class_Dictionary>`, context\: :ref:`Dictionary<class_Dictionary>` = {}\ ) :ref:`🔗<class_JustAMCPPromptExecutor_method_complete_prompt>`
 
-Looks up the prompt named by ``ref`` and returns completion values for ``argument``. Unknown prompts return an empty completion result.
+Looks up the prompt named by ``ref`` and returns completion values for ``argument``. ``context`` is the optional MCP completion context from ``2025-06-18`` and later. Unknown prompts return an empty completion result.
 
 .. rst-class:: classref-item-separator
 
@@ -96,9 +96,9 @@ Renders the prompt named by ``name`` with ``args``. Returns an error dictionary 
 
 .. rst-class:: classref-method
 
-:ref:`Dictionary<class_Dictionary>` **list_prompts**\ (\ cursor\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_JustAMCPPromptExecutor_method_list_prompts>`
+:ref:`Dictionary<class_Dictionary>` **list_prompts**\ (\ cursor\: :ref:`String<class_String>` = "", include_unlisted\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_JustAMCPPromptExecutor_method_list_prompts>`
 
-Returns a paginated MCP ``prompts/list`` dictionary with ``prompts`` and optional ``nextCursor``. Invalid ``cursor`` values return an error dictionary with code ``-32602``.
+Returns a paginated MCP ``prompts/list`` dictionary with ``prompts`` and optional ``nextCursor``. Invalid ``cursor`` values return an error dictionary with code ``-32602``. When ``include_unlisted`` is ``false``, prompts disabled by the Prompts section toggle or a per-prompt toggle are omitted.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`

@@ -12,7 +12,7 @@ EditorPlugin
 
 **Inherits:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`GridMapEditorPlugin<class_GridMapEditorPlugin>`, :ref:`LuauEditorPlugin<class_LuauEditorPlugin>`, :ref:`LuauLanguageServerPlugin<class_LuauLanguageServerPlugin>`, :ref:`MultiuserEditorPlugin<class_MultiuserEditorPlugin>`, :ref:`SteamEditorPlugin<class_SteamEditorPlugin>`, :ref:`XboxEditorPlugin<class_XboxEditorPlugin>`
+**Inherited By:** :ref:`AssetTagsEditorPlugin<class_AssetTagsEditorPlugin>`, :ref:`ColdStorageEditorPlugin<class_ColdStorageEditorPlugin>`, :ref:`DeviceAutorunEditorPlugin<class_DeviceAutorunEditorPlugin>`, :ref:`GridMapEditorPlugin<class_GridMapEditorPlugin>`, :ref:`InterDVDEditorPlugin<class_InterDVDEditorPlugin>`, :ref:`LiveWallpaperEditorPlugin<class_LiveWallpaperEditorPlugin>`, :ref:`LuauEditorPlugin<class_LuauEditorPlugin>`, :ref:`LuauLanguageServerPlugin<class_LuauLanguageServerPlugin>`, :ref:`MultiuserEditorPlugin<class_MultiuserEditorPlugin>`, :ref:`ScreensaverEditorPlugin<class_ScreensaverEditorPlugin>`, :ref:`SteamEditorPlugin<class_SteamEditorPlugin>`, :ref:`XboxEditorPlugin<class_XboxEditorPlugin>`
 
 Used by the editor to extend its functionality.
 

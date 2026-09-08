@@ -78,6 +78,10 @@ Methods
    +-------------------------+----------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                  | :ref:`add_header<class_HTTPResponse_method_add_header>`\ (\ name\: :ref:`String<class_String>`, value\: :ref:`String<class_String>`\ ) |
    +-------------------------+----------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                  | :ref:`hold<class_HTTPResponse_method_hold>`\ (\ )                                                                                      |
+   +-------------------------+----------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`is_held<class_HTTPResponse_method_is_held>`\ (\ ) |const|                                                                        |
+   +-------------------------+----------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>` | :ref:`is_sse_response<class_HTTPResponse_method_is_sse_response>`\ (\ ) |const|                                                        |
    +-------------------------+----------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                  | :ref:`set_content_type<class_HTTPResponse_method_set_content_type>`\ (\ mime_type\: :ref:`String<class_String>`\ )                     |
@@ -160,6 +164,34 @@ Method Descriptions
 |void| **add_header**\ (\ name\: :ref:`String<class_String>`, value\: :ref:`String<class_String>`\ ) :ref:`🔗<class_HTTPResponse_method_add_header>`
 
 Adds a custom HTTP header to the response. The ``name`` is the header name and ``value`` is the header value.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_HTTPResponse_method_hold:
+
+.. rst-class:: classref-method
+
+|void| **hold**\ (\ ) :ref:`🔗<class_HTTPResponse_method_hold>`
+
+.. container:: contribute
+
+	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_HTTPResponse_method_is_held:
+
+.. rst-class:: classref-method
+
+:ref:`bool<class_bool>` **is_held**\ (\ ) |const| :ref:`🔗<class_HTTPResponse_method_is_held>`
+
+.. container:: contribute
+
+	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 .. rst-class:: classref-item-separator
 

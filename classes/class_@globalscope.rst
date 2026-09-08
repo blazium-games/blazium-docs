@@ -43,11 +43,15 @@ Properties
    :widths: auto
 
    +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`Analytics<class_Analytics>`                             | :ref:`Analytics<class_@GlobalScope_property_Analytics>`                             |
+   +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`AudioServer<class_AudioServer>`                         | :ref:`AudioServer<class_@GlobalScope_property_AudioServer>`                         |
    +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`CameraServer<class_CameraServer>`                       | :ref:`CameraServer<class_@GlobalScope_property_CameraServer>`                       |
    +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`ClassDB<class_ClassDB>`                                 | :ref:`ClassDB<class_@GlobalScope_property_ClassDB>`                                 |
+   +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`CrashReporter<class_CrashReporter>`                     | :ref:`CrashReporter<class_@GlobalScope_property_CrashReporter>`                     |
    +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`CrowdControl<class_CrowdControl>`                       | :ref:`CrowdControl<class_@GlobalScope_property_CrowdControl>`                       |
    +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
@@ -89,6 +93,8 @@ Properties
    +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`JavaScriptBridge<class_JavaScriptBridge>`               | :ref:`JavaScriptBridge<class_@GlobalScope_property_JavaScriptBridge>`               |
    +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`JustAMCPMCPClientBridge<class_JustAMCPMCPClientBridge>` | :ref:`JustAMCPMCPClientBridge<class_@GlobalScope_property_JustAMCPMCPClientBridge>` |
+   +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`KickAPI<class_KickAPI>`                                 | :ref:`KickAPI<class_@GlobalScope_property_KickAPI>`                                 |
    +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`Marshalls<class_Marshalls>`                             | :ref:`Marshalls<class_@GlobalScope_property_Marshalls>`                             |
@@ -116,6 +122,10 @@ Properties
    | :ref:`PhysicsServer3DManager<class_PhysicsServer3DManager>`   | :ref:`PhysicsServer3DManager<class_@GlobalScope_property_PhysicsServer3DManager>`   |
    +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`ProjectSettings<class_ProjectSettings>`                 | :ref:`ProjectSettings<class_@GlobalScope_property_ProjectSettings>`                 |
+   +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`RemoteControlRegistry<class_RemoteControlRegistry>`     | :ref:`RemoteControlRegistry<class_@GlobalScope_property_RemoteControlRegistry>`     |
+   +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`RemoteControlServer<class_RemoteControlServer>`         | :ref:`RemoteControlServer<class_@GlobalScope_property_RemoteControlServer>`         |
    +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`RenderingServer<class_RenderingServer>`                 | :ref:`RenderingServer<class_@GlobalScope_property_RenderingServer>`                 |
    +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
@@ -4812,6 +4822,18 @@ Represents the size of the :ref:`Variant.Operator<enum_@GlobalScope_Variant.Oper
 Property Descriptions
 ---------------------
 
+.. _class_@GlobalScope_property_Analytics:
+
+.. rst-class:: classref-property
+
+:ref:`Analytics<class_Analytics>` **Analytics** :ref:`🔗<class_@GlobalScope_property_Analytics>`
+
+The :ref:`Analytics<class_Analytics>` singleton.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_@GlobalScope_property_AudioServer:
 
 .. rst-class:: classref-property
@@ -4843,6 +4865,18 @@ The :ref:`CameraServer<class_CameraServer>` singleton.
 :ref:`ClassDB<class_ClassDB>` **ClassDB** :ref:`🔗<class_@GlobalScope_property_ClassDB>`
 
 The :ref:`ClassDB<class_ClassDB>` singleton.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_@GlobalScope_property_CrashReporter:
+
+.. rst-class:: classref-property
+
+:ref:`CrashReporter<class_CrashReporter>` **CrashReporter** :ref:`🔗<class_@GlobalScope_property_CrashReporter>`
+
+The :ref:`CrashReporter<class_CrashReporter>` singleton.
 
 .. rst-class:: classref-item-separator
 
@@ -5098,6 +5132,20 @@ The :ref:`JavaScriptBridge<class_JavaScriptBridge>` singleton.
 
 ----
 
+.. _class_@GlobalScope_property_JustAMCPMCPClientBridge:
+
+.. rst-class:: classref-property
+
+:ref:`JustAMCPMCPClientBridge<class_JustAMCPMCPClientBridge>` **JustAMCPMCPClientBridge** :ref:`🔗<class_@GlobalScope_property_JustAMCPMCPClientBridge>`
+
+.. container:: contribute
+
+	There is currently no description for this property. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_@GlobalScope_property_KickAPI:
 
 .. rst-class:: classref-property
@@ -5263,6 +5311,30 @@ The :ref:`PhysicsServer3DManager<class_PhysicsServer3DManager>` singleton.
 :ref:`ProjectSettings<class_ProjectSettings>` **ProjectSettings** :ref:`🔗<class_@GlobalScope_property_ProjectSettings>`
 
 The :ref:`ProjectSettings<class_ProjectSettings>` singleton.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_@GlobalScope_property_RemoteControlRegistry:
+
+.. rst-class:: classref-property
+
+:ref:`RemoteControlRegistry<class_RemoteControlRegistry>` **RemoteControlRegistry** :ref:`🔗<class_@GlobalScope_property_RemoteControlRegistry>`
+
+The :ref:`RemoteControlRegistry<class_RemoteControlRegistry>` singleton.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_@GlobalScope_property_RemoteControlServer:
+
+.. rst-class:: classref-property
+
+:ref:`RemoteControlServer<class_RemoteControlServer>` **RemoteControlServer** :ref:`🔗<class_@GlobalScope_property_RemoteControlServer>`
+
+The :ref:`RemoteControlServer<class_RemoteControlServer>` singleton.
 
 .. rst-class:: classref-item-separator
 

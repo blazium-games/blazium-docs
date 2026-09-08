@@ -84,6 +84,20 @@ Emitted when a file is moved from ``old_file`` path to ``new_file`` path.
 
 ----
 
+.. _class_FileSystemDock_signal_files_selected:
+
+.. rst-class:: classref-signal
+
+**files_selected**\ (\ ) :ref:`🔗<class_FileSystemDock_signal_files_selected>`
+
+.. container:: contribute
+
+	There is currently no description for this signal. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_FileSystemDock_signal_folder_color_changed:
 
 .. rst-class:: classref-signal

@@ -38,15 +38,15 @@ Methods
 .. table::
    :widths: auto
 
-   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>` | :ref:`execute_tool<class_JustAMCPToolExecutor_method_execute_tool>`\ (\ tool_name\: :ref:`String<class_String>`, args\: :ref:`Dictionary<class_Dictionary>`\ )                                 |
-   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`           | :ref:`get_tool_schemas<class_JustAMCPToolExecutor_method_get_tool_schemas>`\ (\ register_only\: :ref:`bool<class_bool>` = false, ignore_settings\: :ref:`bool<class_bool>` = false\ ) |static| |
-   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>` | :ref:`list_tools<class_JustAMCPToolExecutor_method_list_tools>`\ (\ cursor\: :ref:`String<class_String>` = ""\ ) |static|                                                                      |
-   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                              | :ref:`set_test_scene_root<class_JustAMCPToolExecutor_method_set_test_scene_root>`\ (\ node\: :ref:`Node<class_Node>`\ ) |static|                                                               |
-   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>` | :ref:`execute_tool<class_JustAMCPToolExecutor_method_execute_tool>`\ (\ tool_name\: :ref:`String<class_String>`, args\: :ref:`Dictionary<class_Dictionary>`\ )                                                                                                                                                    |
+   +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`           | :ref:`get_tool_schemas<class_JustAMCPToolExecutor_method_get_tool_schemas>`\ (\ register_only\: :ref:`bool<class_bool>` = false, ignore_settings\: :ref:`bool<class_bool>` = false, apply_discovery_filter\: :ref:`bool<class_bool>` = true, include_disabled_tools\: :ref:`bool<class_bool>` = false\ ) |static| |
+   +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>` | :ref:`list_tools<class_JustAMCPToolExecutor_method_list_tools>`\ (\ cursor\: :ref:`String<class_String>` = ""\ ) |static|                                                                                                                                                                                         |
+   +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                              | :ref:`set_test_scene_root<class_JustAMCPToolExecutor_method_set_test_scene_root>`\ (\ node\: :ref:`Node<class_Node>`\ ) |static|                                                                                                                                                                                  |
+   +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -73,7 +73,7 @@ Executes the tool named by ``tool_name`` with ``args`` and returns the tool resp
 
 .. rst-class:: classref-method
 
-:ref:`Array<class_Array>` **get_tool_schemas**\ (\ register_only\: :ref:`bool<class_bool>` = false, ignore_settings\: :ref:`bool<class_bool>` = false\ ) |static| :ref:`🔗<class_JustAMCPToolExecutor_method_get_tool_schemas>`
+:ref:`Array<class_Array>` **get_tool_schemas**\ (\ register_only\: :ref:`bool<class_bool>` = false, ignore_settings\: :ref:`bool<class_bool>` = false, apply_discovery_filter\: :ref:`bool<class_bool>` = true, include_disabled_tools\: :ref:`bool<class_bool>` = false\ ) |static| :ref:`🔗<class_JustAMCPToolExecutor_method_get_tool_schemas>`
 
 Returns MCP JSON schema dictionaries for the available tools. Set ``register_only`` to return registration metadata only, or ``ignore_settings`` to bypass editor filtering.
 
